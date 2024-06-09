@@ -83,11 +83,6 @@ other_bachelor = sum(genders == 'Other' & education_levels == 1);
 other_master = sum(genders == 'Other' & education_levels == 2);
 other_Phd = sum(genders == 'Other' & education_levels == 3);
 
-// Afficher les comptes pour débogage
-disp("Hommes : HS=" + string(male_HS) + ", Bachelor=" + string(male_bachelor) + ", Master=" + string(male_master) + ", PhD=" + string(male_Phd));
-disp("Femmes : HS=" + string(female_HS) + ", Bachelor=" + string(female_bachelor) + ", Master=" + string(female_master) + ", PhD=" + string(female_Phd));
-disp("Autres : HS=" + string(other_HS) + ", Bachelor=" + string(other_bachelor) + ", Master=" + string(other_master) + ", PhD=" + string(other_Phd));
-
 // Pour les hommes
 male_data = [male_HS, male_bachelor, male_master, male_Phd];
 
@@ -302,63 +297,76 @@ end
 
 
 # EXO2 
-Donnez sous forme d'histogrammes la distributions des ages.
-Je crée d'abord un tableau pour la catégorie age : age = D(:, 2);
-Je cherche ensuite l'age maximum et l'age minimum pour déterminer un intervalle :
-min_age = min(age); (j'ai trouvé 62)
-max_age = max(age);  (j'ai trouvé 21)
-Il existe donc 41 age différents. Ensuite je peux tracer mon histogramme. 
+
+
+Pour cette exo on a besoin de ça :
+D = csvRead('data.csv');
+DD = csvRead('data.csv',',','.','string');
+
+1. Donnez sous forme d'histogrammes la distributions des ages.
+age = D(:, 2);
+min_age = min(age); 
+max_age = max(age);  
 histplot(41,age);
 
-Donnez sous forme d'histogrammes la distributions de l'expérience.
-Je suis le même raisonnement que celui de l'age. 
+1. Donnez sous forme d'histogrammes la distributions de l'expérience.
 exp = D(:,6);
 min_xp = min(exp);
 max_xp = max(exp);
 histplot(34,exp);
-Donnez les quartiles, interquatiles, min,max, moyenne, mediane, mode, et ecart type de l'age.
-quartiles : Q = quart(age) (Q1=28, Q2=32, Q3=38)
-min : min_age = min(age); (=21)
-max : max_age = max(age); (=42)
-moyenne : mean(age) (environ 34)
-médiane : median(age) (=32)
-mode : Je cherche d'abord les valeurs uniques --> unique_vals = unique(age);
-       Ensuite, compte les occurences de chaque valeur unique --> freq = histc(ages, unique_vals);
-       Je cherche ensuite l'indice de la valeur la plus fréquente --> [max_freq, max_index] = max(freq);
-       Je peux ensuite trouver la valeur du mode --> age_mode = unique_vals(max_index);
 
+2. Donnez les quartiles, interquatiles, min,max, moyenne, mediane, mode, et ecart type de l'age.
+Q = quart(age)
+IQR = Q(3) - Q(1) 
+min_age = min(age);
+max_age = max(age);
+mean(age)
+median(age)
 
+unique_vals = unique(age);
+freq = histc(age, unique_vals);
+[max_freq, max_index] = max(freq);
+age_mode = unique_vals(max_index);
 
+stdev(age)
 
-
-A l'aide du paquet stixbox, tracez une boite à moustache pour l'age.
-J'installe d'abord stixbox : atomsInstall("stixbox");
-Pour tracer le graphique, j'utilise la commande :
+3. A l'aide du paquet stixbox, tracez une boite à moustache pour l'age.
+atomsInstall("stixbox");
  boxplot(age);
 
-Refaire les questions précédentes pour l'expérience.
-Refaire les questions précédentes pour l'expérience.
-quartiles : Q = quart(exp) (Q1=3, Q2=7, Q3=12)
-min : min_xp = min(exp); (=0)
-max : max_xp = max(exp); (=34)
-moyenne : mean(exp) (environ 8)
-médiane : median(exp) (=7)
-mode : Je cherche d'abord les valeurs uniques --> Unique_vals = unique(exp);
-       Ensuite, compte les occurences de chaque valeur unique --> Freq = histc(exp, Unique_vals);
-       Je cherche ensuite l'indice de la valeur la plus fréquente --> [max_Freq, max_Index] = max(Freq);
-       Je peux ensuite trouver la valeur du mode --> exp_mode = Unique_vals(max_Index); (=1,5)
+4. Refaire les questions précédentes pour l'expérience.
+Q = quart(exp) 
+IQR = Q(3) - Q(1)
+min_xp = min(exp); 
+max_xp = max(exp); 
+mean(exp)
+median(exp)
+
+Unique_vals = unique(exp);
+Freq = histc(exp, Unique_vals);
+[max_Freq, max_Index] = max(Freq);
+exp_mode = Unique_vals(max_Index);
+
+stdev(exp)
+
+
+boxplot(exp);
+
 
 # EXO3 
 Pour cette exo on a besoin de ça :
 D = csvRead('data.csv');
 DD = csvRead('data.csv',',','.','string');
 genre = DD(:,3);
+atomsInstall("stixbox");
+atomLoad("stixbox");
 1. Donnez, sous forme d'histogramme la distribution des salaires, suivant le genre.
 
 D_homme = D(genre == 'Male',:);
 D_femme = D(genre == 'Female',:);
 salaire_homme = D_homme(:,7);
 salaire_femme = D_femme(:,7);
+num_bins = 50;
 subplot(2, 1, 1);
 histplot(num_bins, salaire_homme);
 title("Distribution des salaires pour les hommes");
@@ -398,8 +406,8 @@ max_salaire = max(salaires)
 mean(salaires)
 median(salaires)
 stdev(salaires)
-boxplot(salaires)
-
+atomsLoad("stixbox");
+boxplot(salaires);
 
 4. Refaire la question précédente, en distingant les genres. Tracez une boîte à moustache pour chaque genre. Commentaires ? 
 QH = quart(salaire_homme)  
@@ -417,7 +425,7 @@ median(salaire_femme)
 stdev(salaire_homme) 
 stdev(salaire_femme) 
 
-boite à moustache : 
+  
 boxplot(salaire_homme);
 title("Boîte à moustaches des salaires des hommes");
 ylabel("Salaires");
