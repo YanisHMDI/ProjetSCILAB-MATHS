@@ -8,6 +8,7 @@ dataS = csvRead("data.csv",[],[],'string')            //ouvre data.csv en une ma
 # EXO1 
 
 // 1.
+
 genre = tabul(dataS(:,3),"i")                        // Récupère la liste des genres ainsi que leur occurrence (MALE=3672, FEMALE=3013, OTHER=14)
 genre(1)                                             // Liste les différents genres du tableau
 genre(2)                                             // Donne l'occurrence correspondant aux valeurs de "genre(1)"
