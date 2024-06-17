@@ -125,3 +125,130 @@ age_6_other = dbldata(indice_6_other,2)             // 39.571429
 mean(age_6_other)                                   
 exp_6_other = dbldata(indice_6_other,6)             //16.428571
 mean(exp_6_other)  
+
+# Exercice 1 : Surface, population et densité
+
+## Table des matières
+1. [Total](#q1)
+2. [Total par contient](#q2)
+3. [Histogramme de la densité par contient](#q3)
+4. [Répartition de la surface et de la population](#q4)
+
+---
+
+## Question 1 : Genres {#q1}
+
+> Calculer la surface terrestre mondiale, le nombre d’habitants mondial et la densité moyenne d’habitants au km2.
+
+**[Script Scilab](scripts/ex1-1.sce) :**
+
+```scilab
+genre = tabul(dataS(:,3),"i")                        
+genre(1)                                             
+genre(2)                                             
+pie(genre(2),genre(1)) 
+```
+
+**Résultat :**
+
+![Représentation des genres en fonction de leur occurrences](img/1.1-1.png)
+![Représentation des genres en fonction de leur occurrences en pourcentage](img/1.1.png)
+
+---
+
+## Question 2 : Total par contient {#q2}
+
+> Calculer la surface terrestre, le nombre d’habitants et la densité moyenne d’habitants au km2 pour chaque continent.
+
+**[Script Scilab](scripts/ex1-2.sce) :**
+
+```scilab
+genre_lvl = [dataS(:,3),dataS(:,4)]                                 
+
+high_homme = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Male"))    
+high_femme = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Female"))   
+high_autre = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Other"))    
+
+b_homme = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Male"))        
+b_femme = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Female"))      
+b_autre = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Other"))       
+
+m_homme = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Male"))        
+m_femme = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Female"))      
+m_autre = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Other"))       
+
+d_homme = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Male"))        
+d_femme = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Female"))      
+d_autre = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Other"))       
+
+temp = [high_homme, high_femme, high_autre;b_homme, b_femme, b_autre;m_homme, m_femme, m_autre;d_homme, d_femme, d_autre]   // Crée un tableau 
+lvlEtude = [0,1,2,3]
+bar(lvlEtude,temp)
+legend("homme","femme","autre")
+```
+
+**Résultat :**
+
+- Surface terrestre :
+    - Afrique : 30 312 530 km²
+    - Amérique du nord : 22 314 070 km²
+    - Amérique du sud : 17 821 000 km²
+    - Asie : 31 879 830 km²
+    - Europe : 23 060 610 km²
+    - Océanie : 8 562 630 km²
+
+- Population :
+    - Afrique : 1 250 700 000 habitants
+    - Amérique du nord : 581 880 000 habitants
+    - Amérique du sud : 422 980 000 habitants
+    - Asie : 199 082 704 habitants
+    - Europe : 744 330 000 habitants
+    - Océanie : 40 780 000 habitants
+
+- Densité moyenne :
+    - Afrique : 41.26 habitants/km²
+    - Amérique du nord : 26.08 habitants/km²
+    - Amérique du sud : 23.73 habitants/km²
+    - Asie : 140.97 habitants/km²
+    - Europe : 32.28 habitants/km²
+    - Océanie : 4.76 habitants/km²
+
+---
+
+## Question 3 : Histogramme de la densité par contient {#q3}
+
+> Représenter la densité moyenne d’habitants au km2 pour chaque continent en utilisant un diagramme en bâtons (on mettra en abscisse des entiers de 1 à 6).
+
+**[Script Scilab](scripts/ex1-3.sce) :**
+
+```scilab
+bar([densiteAfrique, densiteAmeriqueDuNord, densiteAmeriqueDuSud, densiteAsie, densiteEurope, densiteOceanie])
+```
+**Résultat :**
+
+![Densité de population par continent](img/ex1-3.png)
+
+---
+
+## Question 4 : Répartition de la surface et de la population {#q4}
+
+> Représenter la répartition de la surface terrestre puis du nombre d'habitants par continent sous la forme de diagramme en camembert à l'aide de l'instruction `pie`.
+
+**[Script Scilab](scripts/ex1-4.sce) :**
+
+```scilab
+pie([surfaceAfrique, surfaceAmeriqueDuNord, surfaceAmeriqueDuSud, surfaceAsie, surfaceEurope, surfaceOceanie])
+
+pie([populationAfrique, populationAmeriqueDuNord, populationAmeriqueDuSud, populationAsie, populationEurope, populationOceanie])
+```
+
+**Résultat :**
+
+![Répartition de la surface terrestre](img/ex1-4-1.png)
+
+![Répartition de la population](img/ex1-4-2.png)
+
+
+---
+
+[🏠](../ "Retour au sommaire") | [➡️](../ex2/ "Exercice suivant (Exercice 2)")
