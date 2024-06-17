@@ -62,7 +62,7 @@ legend(['Hommes', 'Régression Hommes', 'Femmes', 'Régression Femmes'], 'locati
 
 ## Question 2 {#q2}
 
-> Tracez un nuage de points (salaire,expérince) et les droites de regression associées pour chaque niveau d'études. Commentaire ?
+> Tracez un nuage de points (salaire,expérience) et les droites de regression associées pour chaque niveau d'études. Commentaire ?
 
 **[Script Scilab](scripts/ex5-2.sce) :**
 
