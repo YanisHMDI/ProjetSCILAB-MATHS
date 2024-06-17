@@ -67,19 +67,19 @@ legend(['Hommes', 'Régression Hommes', 'Femmes', 'Régression Femmes'], 'locati
 **[Script Scilab](scripts/ex5-2.sce) :**
 
 ```scilab
-// Load data
+=
 data = csvRead('data.csv');
 experience = data(:, 6);
 salaire = data(:, 7);
 niveau_etudes = data(:, 4); // Assuming column 4 contains education levels
 
-// Indices for each education level
+=
 indice_high = find(niveau_etudes == 0);
 indice_b = find(niveau_etudes == 1);
 indice_m = find(niveau_etudes == 2);
 indice_p = find(niveau_etudes == 3);
 
-// Extract data for each education level
+==
 exp_high = experience(indice_high);
 salaire_high = salaire(indice_high);
 exp_b = experience(indice_b);
@@ -89,7 +89,7 @@ salaire_m = salaire(indice_m);
 exp_p = experience(indice_p);
 salaire_p = salaire(indice_p);
 
-// Clear current figure
+=
 clf;
 
 
