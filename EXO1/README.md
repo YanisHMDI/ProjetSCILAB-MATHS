@@ -164,21 +164,26 @@ mean(exp_p)
 
 **Résultat :**
 
-// 36706.694
-// 26.854911
-// 1.9151786
+- Niveau d'étude 0 :
+    - Salaire moyen : 36706.694 €
+    - Âge moyen : 27 ans
+    - Experience moyenne : 1.9151786
 
-// 95082.909
-// 30.260179
-// 5.4195631
+- Niveau d'étude 1 :
+    - Salaire moyen : 95082.909 €
+    - Âge moyen : 30 ans
+    - Experience moyenne : 5.4195631
 
-// 130112.06
-// 35.171505
-// 9.6456989
+- Niveau d'étude 2 :
+    - Salaire moyen : 130112.06 €
+    - Âge moyen : 35 ans
+    - Experience moyenne : 9.6456989
 
-// 165651.46
-// 41.154858
-// 13.915267
+- Niveau d'étude 3 :
+    - Salaire moyen : 165651.46 €
+    - Âge moyen : 41 ans
+    - Experience moyenne : 13.915267
+
 
 ---
 
@@ -189,33 +194,46 @@ mean(exp_p)
 **[Script Scilab](scripts/ex1-6.sce) :**
 
 ```scilab
-pie([surfaceAfrique, surfaceAmeriqueDuNord, surfaceAmeriqueDuSud, surfaceAsie, surfaceEurope, surfaceOceanie])
+indice_6_female = find(dataS(:,3) == "Female")
+salaire_6_female = dbldata(indice_6_female,7)
+mean(salaire_6_female)                              
+age_6_female = dbldata(indice_6_female,2)
+mean(age_6_female)                                  
+exp_6_female = dbldata(indice_6_female,6)
+mean(exp_6_female)                                  
+indice_6_male = find(dataS(:,3) == "Male")
+salaire_6_male = dbldata(indice_6_male,7)
+mean(salaire_6_male)                                
+age_6_male = dbldata(indice_6_male,2)
+mean(age_6_male)                                    
+exp_6_male = dbldata(indice_6_male,6)
+mean(exp_6_male)                                    
 
-pie([populationAfrique, populationAmeriqueDuNord, populationAmeriqueDuSud, populationAsie, populationEurope, populationOceanie])
+indice_6_other = find(dataS(:,3) == "Other")        
+salaire_6_other = dbldata(indice_6_other,7)         
+mean(salaire_6_other)                              
+age_6_other = dbldata(indice_6_other,2)             
+mean(age_6_other)                                   
+exp_6_other = dbldata(indice_6_other,6)            
+mean(exp_6_other) 
 ```
 
 **Résultat :**
 
+- Homme :
+    - Salaire moyen : 121389.87 €
+    - Âge moyen : 34 ans
+    - Experience moyenne : 8.6169662
 
-mean(salaire_6_female)                              // 107889.00
+- Femme :
+    - Salaire moyen : 107889.00 €
+    - Âge moyen : 33 ans
+    - Experience moyenne : 7.4201792
 
-mean(age_6_female)                                  // 32.626286
-
-mean(exp_6_female)                                  // 7.4201792
-
-
-mean(salaire_6_male)                                // 121389.87
-
-mean(age_6_male)                                    // 34.416394
-
-mean(exp_6_male)                                    // 8.6169662
-
-      
-salaire_6_other = dbldata(indice_6_other,7)         // 125869.86
-                            
-age_6_other = dbldata(indice_6_other,2)             // 39.571429
-                                  
-exp_6_other = dbldata(indice_6_other,6)             //16.428571
+- Autres :
+    - Salaire moyen : 125869.86 €
+    - Âge moyen : 40 ans
+    - Experience moyenne : 16.428571
 
 
 ---
