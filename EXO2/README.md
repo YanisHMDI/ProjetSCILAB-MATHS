@@ -81,9 +81,9 @@ title('Distribution des expériences dans l''échantillon'); // Titre du graphiq
 
 ## Question 1 {#q1}
 
-> Donnez sous forme de camembert la répartition des genres.
+> Donnez sous forme d'histogrammes la distributions des ages.
 
-**[Script Scilab](scripts/ex1-1.sce) :**
+**[Script Scilab](scripts/ex2-1.sce) :**
 
 ```scilab
 genre = tabul(dataS(:,3),"i")                        
@@ -101,9 +101,9 @@ pie(genre(2),genre(1))
 
 ## Question 2 {#q2}
 
-> Donnez sous forme d'histogramme la répartition des niveaux d'études, suivants le genre.
+> Donnez sous forme d'histogrammes la distributions de l'expérience.
 
-**[Script Scilab](scripts/ex1-2.sce) :**
+**[Script Scilab](scripts/ex2-2.sce) :**
 
 ```scilab
 genre_lvl = [dataS(:,3),dataS(:,4)]                                 
@@ -138,9 +138,9 @@ legend("homme","femme","autre")
 
 ## Question 3 {#q3}
 
-> Donnez sous forme d'histogramme, les effectifs des 10 professions les plus représentées.
+> Donnez les quartiles, interquatiles, min,max, moyenne, mediane, mode, et ecart type de l'age.
 
-**[Script Scilab](scripts/ex1-3.sce) :**
+**[Script Scilab](scripts/ex2-3.sce) :**
 
 ```scilab
 metiers = tabul(dataS(:,5),"i")                                 
@@ -158,9 +158,9 @@ legend(profession(indice(1:10)))
 
 ## Question 4 {#q4}
 
-> Quelle est la profession la plus fréquente des femmes ? des hommes ?
+> A l'aide du paquet stixbox, tracez une boite à moustache pour l'age.
 
-**[Script Scilab](scripts/ex1-4.sce) :**
+**[Script Scilab](scripts/ex2-4.sce) :**
 
 ```scilab
 indice_female = find(dataS(:,3) == "Female")        
@@ -191,11 +191,11 @@ liste_metiers_male(11)
 
 ---
 
-## Question 5 {#q4}
+## Question 5 {#q5}
 
-> Pour chaque niveau d'études, donnez le salaire moyen, l'âge moyen et l'expérience moyenne.
+> Refaire les questions précédentes pour l'expérience.
 
-**[Script Scilab](scripts/ex1-5.sce) :**
+**[Script Scilab](scripts/ex2-5.sce) :**
 
 ```scilab
 indice_high = find(dbldata(:,4) == 0)
@@ -252,4 +252,4 @@ mean(exp_p)
 ---
 
 
-[🏠](../ "Retour au sommaire") | [➡️](../EXO2/ "Exercice suivant (Exercice 2)")
+[⬅️](../EXO1/ "Exercice précédent (Exercice 1)") | [🏠](../ "Retour au sommaire") | [➡️](../EXO3/ "Exercice suivant (Exercice 3)")

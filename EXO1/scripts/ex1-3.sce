@@ -1,3 +1,5 @@
+data = csvRead("data.csv");
+
 metiers = tabul(dataS(:,5),"i")                                 // Récupère la liste des professions ainsi que leur occurrence
 
 [occu,indice] = gsort(metiers(2))                               // Trie les occurrences et récupère les indices

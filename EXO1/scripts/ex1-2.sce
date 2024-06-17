@@ -1,3 +1,5 @@
+data = csvRead("data.csv");
+
 genre_lvl = [dataS(:,3),dataS(:,4)]                                  // Crée une matrice 6699x2 avec les genres et le niveau d'études
 
 high_homme = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Male"))     // Nombre d'hommes avec un niveau d'étude de 0 (185)

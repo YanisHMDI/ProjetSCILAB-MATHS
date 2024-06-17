@@ -1,3 +1,5 @@
+data = csvRead("data.csv");
+
 indice_6_female = find(dataS(:,3) == "Female")
 salaire_6_female = dbldata(indice_6_female,7)
 mean(salaire_6_female)                              // 107889.00

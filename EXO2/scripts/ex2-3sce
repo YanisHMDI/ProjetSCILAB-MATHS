@@ -1,0 +1,14 @@
+data = csvRead("data.csv");
+
+mean(dbldata(:,2))                                    //moyenne  =  33.622033
+min(dbldata(:,2))                                     //min      =  21
+max(dbldata(:,2))                                     //max      =  62
+median(dbldata(:,2))                                  //médianne  =  32
+quart(dbldata(:,2))                                   //quartile  = 28.32.38.
+iqr(dbldata(:,2))                                     //interquartile = 10
+stdev(dbldata(:,2))                                   //ecart-type = 7.6156456
+
+age = tabul(dbldata(:,2))                             //récupère la liste des âges et leurs occurrences
+[occurence_tri, indice_tri] = gsort(age(:,2))         //trie les occurrences et récupère les indices
+liste_age = age(:,1)                                  //liste des âges
+mode = liste_age(indice_tri(1))                       //mode =27  

@@ -122,7 +122,7 @@ liste_metiers_male(11)
 
 ---
 
-## Question 5 {#q4}
+## Question 5 {#q5}
 
 > Pour chaque niveau d'études, donnez le salaire moyen, l'âge moyen et l'expérience moyenne.
 
@@ -187,7 +187,7 @@ mean(exp_p)
 
 ---
 
-## Question 6 {#q4}
+## Question 6 {#q6}
 
 > Pour chaque genre, donnez le salaire moyen, l'âge moyen et l'expérience moyenne.
 

@@ -1,3 +1,5 @@
+data = csvRead("data.csv");
+
 indice_high = find(dbldata(:,4) == 0)
 salaire_high = dbldata(indice_high,7)
 mean(salaire_high)                                  // 36706.694

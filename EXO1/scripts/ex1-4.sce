@@ -1,3 +1,5 @@
+data = csvRead("data.csv");
+
 indice_female = find(dataS(:,3) == "Female")        // Récupère les indices de la colonne 3 de data.csv contenant "Female"
 [valeurs] = dataS(indice_female,5)                  // Récupère les métiers situés aux indices récupérés précédemment
 metiers_female = tabul(valeurs)                     // Récupère les métiers sans doublons ainsi que leur occurrence
