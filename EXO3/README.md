@@ -250,6 +250,8 @@ boxplot(salaire_other, "orientation", "horizontal")
 
 ![Boîte à moustache homme](img/3.4M.png)
 
+![Boîte à moustache femme](img/3.4F.png)
+
 ![Boîte à moustache autres](img/3.4O.png)
 
 ---
