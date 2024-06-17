@@ -71,31 +71,32 @@ title('Distribution des expériences dans l''échantillon'); // Titre du graphiq
 # EXO2
 
 ## Table des matières
-1. [Répartition des genres](#q1)
-2. [Répartition des niveaux d'études suivant le genre](#q2)
-3. [Effectifs des 10 professions les plus représentées](#q3)
-4. [La profession la plus fréquente](#q4)
-5. [Salaire moyen, l'âge moyen et l'expérience moyenne suivant le niveau d'étude](#q5)
+1. [Distribution des ages](#q1)
+2. [Distribution de l'expérience](#q2)
+3. [Quartiles, interquatiles, min,max, moyenne, mediane, mode, et ecart type de l'age.](#q3)
+4. [Boite à moustache pour l'age](#q4)
+5. [Expérience](#q5)
 
 ---
 
 ## Question 1 {#q1}
 
-> Donnez sous forme d'histogrammes la distributions des ages.
+> Donnez sous forme d'histogrammes la distribution des ages.
 
 **[Script Scilab](scripts/ex2-1.sce) :**
 
 ```scilab
-genre = tabul(dataS(:,3),"i")                        
-genre(1)                                             
-genre(2)                                             
-pie(genre(2),genre(1)) 
+ages = tabul(dbldata(:, 2)); 
+figure;                       
+bar(ages(:, 1), ages(:, 2));  
+xlabel('Âge');
+ylabel('Fréquence');
+title('Répartition des âges dans l''échantillon'); 
 ```
 
 **Résultat :**
 
-![Représentation des genres en fonction de leur occurrences](img/1.1-1.png)
-![Représentation des genres en fonction de leur occurrences en pourcentage](img/1.1.png)
+![Distribution des ages](img/2.1.1.png)
 
 ---
 
@@ -106,33 +107,17 @@ pie(genre(2),genre(1))
 **[Script Scilab](scripts/ex2-2.sce) :**
 
 ```scilab
-genre_lvl = [dataS(:,3),dataS(:,4)]                                 
-
-high_homme = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Male"))    
-high_femme = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Female"))   
-high_autre = length(find(genre_lvl(:,2) == "0" & genre_lvl(:,1) == "Other"))    
-
-b_homme = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Male"))        
-b_femme = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Female"))      
-b_autre = length(find(genre_lvl(:,2) == "1" & genre_lvl(:,1) == "Other"))       
-
-m_homme = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Male"))        
-m_femme = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Female"))      
-m_autre = length(find(genre_lvl(:,2) == "2" & genre_lvl(:,1) == "Other"))       
-
-d_homme = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Male"))        
-d_femme = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Female"))      
-d_autre = length(find(genre_lvl(:,2) == "3" & genre_lvl(:,1) == "Other"))       
-
-temp = [high_homme, high_femme, high_autre;b_homme, b_femme, b_autre;m_homme, m_femme, m_autre;d_homme, d_femme, d_autre]   // Crée un tableau 
-lvlEtude = [0,1,2,3]
-bar(lvlEtude,temp)
-legend("homme","femme","autre")
+exp = tabul(dbldata(:, 6));    
+figure;                        
+bar(exp(:, 1), exp(:, 2));    
+xlabel('Expérience (années)');
+ylabel('Fréquence');
+title('Répartition de l''expérience dans l''échantillon');
 ```
 
 **Résultat :**
 
-![Histogramme de la répartition des niveau d'études suivant le genre](img/1.2-1.png)
+![Distribution de l'expérience](img/2.1.2.png)
 
 ---
 
@@ -143,16 +128,26 @@ legend("homme","femme","autre")
 **[Script Scilab](scripts/ex2-3.sce) :**
 
 ```scilab
-metiers = tabul(dataS(:,5),"i")                                 
-[occu,indice] = gsort(metiers(2))                               
-profession = metiers(1)                                         
-matrice_occurence = [occu(1:1),occu(2:2),occu(3:3),occu(4:4),occu(5:5),occu(6:6),occu(7:7),occu(8:8),occu(9:9),occu(10:10)]
-bar(1,matrice_occurence)                                        
-legend(profession(indice(1:10)))                                
+mean(dbldata(:,2))                                    
+min(dbldata(:,2))                                     
+max(dbldata(:,2))                                     
+median(dbldata(:,2))                                  
+quart(dbldata(:,2))                                   
+iqr(dbldata(:,2))                                     
+stdev(dbldata(:,2))                                                               
 ```
 **Résultat :**
 
-![Histogramme représentant l'effectif des 10 professions les plus représentées](img/1.3.png)
+- Moyenne : 33.622033
+- Min : 21
+- Max : 62
+
+- Médiane : 32
+- quartile : 28.32.38.
+- Interquartile : 10
+- Ecart-type : 7.6156456
+
+![Distribution de l'expérience](img/2.1.2.png)
 
 ---
 
@@ -163,23 +158,11 @@ legend(profession(indice(1:10)))
 **[Script Scilab](scripts/ex2-4.sce) :**
 
 ```scilab
-indice_female = find(dataS(:,3) == "Female")        
-[valeurs] = dataS(indice_female,5)                  
-metiers_female = tabul(valeurs)                    
-[occurence_tri,indice_tri] = gsort(metiers_female(2))   
-liste_metiers_female = metiers_female(1)            
-liste_metiers_female(119)                           
-
-                                                    
-
-indice_male = find(dataS(:,3) == "Male")            
-[valeurs2] = dataS(indice_male,5)                   
-metiers_male = tabul(valeurs2)                      
-[occurence_tri,indice_tri] = gsort(metiers_male(2)) 
-liste_metiers_male = metiers_male(1)                
-liste_metiers_male(11)                              
-
-                                                    
+atomsInstall("stixbox")                               //installe le module stixbox
+atomsLoad("stixbox")                                  //charge le module stixbox
+boxplot(dbldata(:, 2), "orientation", "horizontal"); // Affiche un boxplot des âges
+xlabel('Âge');                  // Étiquette de l'axe des x
+title('Distribution des âges dans l''échantillon'); // Titre du graphique                                                                             
 ```
 
 **Résultat :**
