@@ -83,7 +83,7 @@ legend(profession(indice(1:10)))
 ```
 **Résultat :**
 
-![Histogramme représentant l'effectif des 10 professions les plus représentées](img/1-3.png)
+![Histogramme représentant l'effectif des 10 professions les plus représentées](img/1.3.png)
 
 ---
 
@@ -101,7 +101,7 @@ metiers_female = tabul(valeurs)
 liste_metiers_female = metiers_female(1)            
 liste_metiers_female(119)                           
 
-                                                    // femme = Data Scientist //
+                                                    
 
 indice_male = find(dataS(:,3) == "Male")            
 [valeurs2] = dataS(indice_male,5)                   
@@ -110,14 +110,14 @@ metiers_male = tabul(valeurs2)
 liste_metiers_male = metiers_male(1)                
 liste_metiers_male(11)                              
 
-                                                    // homme = Software Engineer //
+                                                    
 ```
 
 **Résultat :**
 
-![Répartition de la surface terrestre](img/ex1-4-1.png)
+- Homme : Software Engineer
 
-![Répartition de la population](img/ex1-4-2.png)
+- Femme : Data Scientist
 
 
 ---
@@ -220,4 +220,4 @@ exp_6_other = dbldata(indice_6_other,6)             //16.428571
 
 ---
 
-[🏠](../ "Retour au sommaire") | [➡️](../ex2/ "Exercice suivant (Exercice 2)")
+[🏠](../ "Retour au sommaire") | [➡️](../EXO2/ "Exercice suivant (Exercice 2)")
